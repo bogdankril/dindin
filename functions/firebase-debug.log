@@ -1,0 +1,59 @@
+[debug] [2025-12-03T00:34:45.863Z] ----------------------------------------------------------------------
+[debug] [2025-12-03T00:34:45.867Z] Command:       /nix/store/ws50yvm6vzlzf7jzz6n7xh4szddrack1-nodejs-20.19.1/bin/node /nix/store/12bms99s479knhxggq0wrjfch7rhy26s-firebase-tools-14.24.1/lib/node_modules/firebase-tools/lib/bin/firebase.js login --reauth
+[debug] [2025-12-03T00:34:45.868Z] CLI Version:   14.24.1
+[debug] [2025-12-03T00:34:45.868Z] Platform:      linux
+[debug] [2025-12-03T00:34:45.868Z] Node Version:  v20.19.1
+[debug] [2025-12-03T00:34:45.868Z] Time:          Wed Dec 03 2025 00:34:45 GMT+0000 (Coordinated Universal Time)
+[debug] [2025-12-03T00:34:45.868Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-12-03T00:34:46.410Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"destination"}
+[debug] [2025-12-03T00:34:46.411Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"function"}
+[debug] [2025-12-03T00:34:46.411Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"function"}
+[debug] [2025-12-03T00:34:46.412Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"glob"}
+[debug] [2025-12-03T00:34:46.412Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"dynamicLinks"}
+[debug] [2025-12-03T00:34:46.412Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"destination"}
+[debug] [2025-12-03T00:34:46.412Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"function"}
+[debug] [2025-12-03T00:34:46.412Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"function"}
+[debug] [2025-12-03T00:34:46.412Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"run"}
+[debug] [2025-12-03T00:34:46.413Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"dynamicLinks"}
+[debug] [2025-12-03T00:34:46.413Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"destination"}
+[debug] [2025-12-03T00:34:46.413Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"function"}
+[debug] [2025-12-03T00:34:46.413Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"function"}
+[debug] [2025-12-03T00:34:46.413Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"regex"}
+[debug] [2025-12-03T00:34:46.413Z] Object "/hosting/rewrites/0" in "firebase.json" is missing required property: {"missingProperty":"dynamicLinks"}
+[debug] [2025-12-03T00:34:46.414Z] Field "/hosting/rewrites/0" in "firebase.json" is possibly invalid: must match a schema in anyOf
+[debug] [2025-12-03T00:34:46.414Z] Field "/hosting" in "firebase.json" is possibly invalid: must be array
+[debug] [2025-12-03T00:34:46.414Z] Field "/hosting" in "firebase.json" is possibly invalid: must match a schema in anyOf
+[debug] [2025-12-03T00:34:46.419Z] Checked if tokens are valid: false, expires at: 1764221870232
+[debug] [2025-12-03T00:34:46.419Z] Checked if tokens are valid: false, expires at: 1764221870232
+[debug] [2025-12-03T00:34:46.420Z] > refreshing access token with scopes: []
+[debug] [2025-12-03T00:34:46.424Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-03T00:34:46.425Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-03T00:34:46.587Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2025-12-03T00:34:46.588Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[error] Failed to fetch Firebase Project from current Studio Workspace: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2025-12-03T00:34:46.594Z] >>> [apiv2][query] POST https://auth.firebase.tools/attest [none]
+[debug] [2025-12-03T00:34:46.595Z] >>> [apiv2][body] POST https://auth.firebase.tools/attest {"session_id":"6d3a1544-a2ee-4cc6-9667-3fc56e9cd6cf"}
+[debug] [2025-12-03T00:34:46.807Z] <<< [apiv2][status] POST https://auth.firebase.tools/attest 200
+[debug] [2025-12-03T00:34:46.807Z] <<< [apiv2][body] POST https://auth.firebase.tools/attest {"token":"FQpmBMOYKBOf3oAcM2I97Y1LBEESHd3jpzSDbsCvwnk"}
+[info] 
+[info] To sign in to the Firebase CLI:
+[info] 
+[info] 1. Take note of your session ID:
+[info] 
+[info]    6D3A1
+[info] 
+[info] 2. Visit the URL below on any device and follow the instructions to get your code:
+[info] 
+[info]    https://auth.firebase.tools/login?code_challenge=a7cospdEmJ7mdRAWbtn5RbFe9jKLh6xOl67DXcStIkg&session=6d3a1544-a2ee-4cc6-9667-3fc56e9cd6cf&attest=FQpmBMOYKBOf3oAcM2I97Y1LBEESHd3jpzSDbsCvwnk
+[info] 
+[info] 3. Paste or enter the authorization code below once you have it:
+[info] 

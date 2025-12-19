@@ -1,0 +1,40 @@
+mutation CreateUser @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  user_insert(data: {
+    id_expr: "uuidV4()"
+    email: "newuser@example.com"
+    username: "newuser"
+    createdAt_expr: "request.time"
+  })
+}
+
+query ListRestaurants @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  restaurants {
+    id
+    name
+    cuisineType
+    averageRating
+  }
+}
+
+mutation AddReview($restaurantId: UUID!, $rating: Int!, $reviewText: String!) @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  review_insert(data: {
+    restaurantId: $restaurantId
+    userId_expr: "auth.uid"
+    rating: $rating
+    reviewText: $reviewText
+    createdAt_expr: "request.time"
+    updatedAt_expr: "request.time"
+  })
+}
+
+query GetFavoriteListsByUser @auth(level: USER) {
+  favoriteLists(where: {
+    userId: {
+      eq_expr: "auth.uid"
+    }
+  }) {
+    id
+    name
+    description
+  }
+}

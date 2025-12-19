@@ -1,0 +1,46 @@
+extend type FavoriteList {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "FavoriteList", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `FavoriteList`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: UUID! @fdc_generated(from: "FavoriteList.user", purpose: IMPLICIT_REF_FIELD)
+}
+extend type FavoriteListItem {
+  """
+  ✨ Implicit foreign key field based on `FavoriteListItem`.`favoriteList`. It must match the value of `FavoriteList`.`id`. See `@ref` for how to customize it.
+  """
+  favoriteListId: UUID! @fdc_generated(from: "FavoriteListItem.favoriteList", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `FavoriteListItem`.`restaurant`. It must match the value of `Restaurant`.`id`. See `@ref` for how to customize it.
+  """
+  restaurantId: UUID! @fdc_generated(from: "FavoriteListItem.restaurant", purpose: IMPLICIT_REF_FIELD)
+}
+extend type Restaurant {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Restaurant", purpose: IMPLICIT_KEY_FIELD)
+}
+extend type Review {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "Review", purpose: IMPLICIT_KEY_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Review`.`restaurant`. It must match the value of `Restaurant`.`id`. See `@ref` for how to customize it.
+  """
+  restaurantId: UUID! @fdc_generated(from: "Review.restaurant", purpose: IMPLICIT_REF_FIELD)
+  """
+  ✨ Implicit foreign key field based on `Review`.`user`. It must match the value of `User`.`id`. See `@ref` for how to customize it.
+  """
+  userId: UUID! @fdc_generated(from: "Review.user", purpose: IMPLICIT_REF_FIELD)
+}
+extend type User {
+  """
+  ✨ Implicit primary key field. It's a UUID column default to a generated new value. See `@table` for how to customize it.
+  """
+  id: UUID! @default(expr: "uuidV4()") @fdc_generated(from: "User", purpose: IMPLICIT_KEY_FIELD)
+}

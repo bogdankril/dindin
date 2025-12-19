@@ -1,0 +1,1621 @@
+"""
+✨ `FavoriteList_KeyOutput` returns the primary key fields of table type `FavoriteList`.
+
+It has the same format as `FavoriteList_Key`, but is only used as mutation return value.
+"""
+scalar FavoriteList_KeyOutput
+"""
+✨ `FavoriteListItem_KeyOutput` returns the primary key fields of table type `FavoriteListItem`.
+
+It has the same format as `FavoriteListItem_Key`, but is only used as mutation return value.
+"""
+scalar FavoriteListItem_KeyOutput
+"""
+✨ `Restaurant_KeyOutput` returns the primary key fields of table type `Restaurant`.
+
+It has the same format as `Restaurant_Key`, but is only used as mutation return value.
+"""
+scalar Restaurant_KeyOutput
+"""
+✨ `Review_KeyOutput` returns the primary key fields of table type `Review`.
+
+It has the same format as `Review_Key`, but is only used as mutation return value.
+"""
+scalar Review_KeyOutput
+"""
+✨ `User_KeyOutput` returns the primary key fields of table type `User`.
+
+It has the same format as `User_Key`, but is only used as mutation return value.
+"""
+scalar User_KeyOutput
+"""
+✨ Generated data input type for table 'FavoriteList'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input FavoriteList_Data {
+  """
+  ✨ Generated from Field `FavoriteList`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `FavoriteList`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `FavoriteList`.`userId` of type `UUID!`
+  """
+  userId: UUID
+  """
+  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `FavoriteList`.`userId` of type `UUID!`)
+  """
+  userId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `FavoriteList`.`user` of type `User!`
+  """
+  user: User_Key
+  """
+  ✨ Generated from Field `FavoriteList`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `FavoriteList`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `FavoriteList`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `FavoriteList`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `FavoriteList`.`description` of type `String`
+  """
+  description: String
+  """
+  ✨ `_expr` server value variant of `description` (✨ Generated from Field `FavoriteList`.`description` of type `String`)
+  """
+  description_expr: String_Expr
+  """
+  ✨ Generated from Field `FavoriteList`.`name` of type `String!`
+  """
+  name: String
+  """
+  ✨ `_expr` server value variant of `name` (✨ Generated from Field `FavoriteList`.`name` of type `String!`)
+  """
+  name_expr: String_Expr
+  """
+  ✨ Generated from Field `FavoriteList`.`updatedAt` of type `Timestamp!`
+  """
+  updatedAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `updatedAt` (✨ Generated from Field `FavoriteList`.`updatedAt` of type `Timestamp!`)
+  """
+  updatedAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `updatedAt` (✨ Generated from Field `FavoriteList`.`updatedAt` of type `Timestamp!`)
+  """
+  updatedAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `updatedAt` (✨ Generated from Field `FavoriteList`.`updatedAt` of type `Timestamp!`)
+  """
+  updatedAt_update: [Timestamp_Update!]
+}
+"""
+✨ Generated filter input type for table 'FavoriteList'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input FavoriteList_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [FavoriteList_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: FavoriteList_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [FavoriteList_Filter!]
+  """
+  ✨ Generated from Field `FavoriteList`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`userId` of type `UUID!`
+  """
+  userId: UUID_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`user` of type `User!`
+  """
+  user: User_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`description` of type `String`
+  """
+  description: String_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`name` of type `String!`
+  """
+  name: String_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`updatedAt` of type `Timestamp!`
+  """
+  updatedAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`favoriteListItems_on_favoriteList` of type `[FavoriteListItem!]!`
+  """
+  favoriteListItems_on_favoriteList: FavoriteListItem_ListFilter
+  """
+  ✨ Generated from Field `FavoriteList`.`restaurants_via_FavoriteListItem` of type `[Restaurant!]!`
+  """
+  restaurants_via_FavoriteListItem: Restaurant_ListFilter
+}
+"""
+✨ Generated first-row input type for table 'FavoriteList'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input FavoriteList_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [FavoriteList_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: FavoriteList_Filter
+}
+"""
+✨ Generated having input type for table 'FavoriteList'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input FavoriteList_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [FavoriteList_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: FavoriteList_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [FavoriteList_Having!]
+  """
+  ✨ Generated from Field `FavoriteList`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`description_count` of type `Int!`
+  """
+  description_count: Int_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`name_count` of type `Int!`
+  """
+  name_count: Int_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`updatedAt_count` of type `Int!`
+  """
+  updatedAt_count: Int_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`userId_count` of type `Int!`
+  """
+  userId_count: Int_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`updatedAt_min` of type `Timestamp`
+  """
+  updatedAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `FavoriteList`.`updatedAt_max` of type `Timestamp`
+  """
+  updatedAt_max: Timestamp_Filter
+}
+"""
+✨ Generated key input type for table 'FavoriteList'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input FavoriteList_Key {
+  """
+  ✨ Generated from Field `FavoriteList`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `FavoriteList`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'FavoriteList'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input FavoriteList_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: FavoriteList_Filter
+}
+"""
+✨ Generated order input type for table 'FavoriteList'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input FavoriteList_Order {
+  """
+  ✨ Generated from Field `FavoriteList`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`userId` of type `UUID!`
+  """
+  userId: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`user` of type `User!`
+  """
+  user: User_Order
+  """
+  ✨ Generated from Field `FavoriteList`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`description` of type `String`
+  """
+  description: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`name` of type `String!`
+  """
+  name: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`updatedAt` of type `Timestamp!`
+  """
+  updatedAt: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`description_count` of type `Int!`
+  """
+  description_count: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`name_count` of type `Int!`
+  """
+  name_count: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`updatedAt_count` of type `Int!`
+  """
+  updatedAt_count: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`userId_count` of type `Int!`
+  """
+  userId_count: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`updatedAt_min` of type `Timestamp`
+  """
+  updatedAt_min: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteList`.`updatedAt_max` of type `Timestamp`
+  """
+  updatedAt_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'FavoriteListItem'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input FavoriteListItem_Data {
+  """
+  ✨ Generated from Field `FavoriteListItem`.`favoriteListId` of type `UUID!`
+  """
+  favoriteListId: UUID
+  """
+  ✨ `_expr` server value variant of `favoriteListId` (✨ Generated from Field `FavoriteListItem`.`favoriteListId` of type `UUID!`)
+  """
+  favoriteListId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `FavoriteListItem`.`restaurantId` of type `UUID!`
+  """
+  restaurantId: UUID
+  """
+  ✨ `_expr` server value variant of `restaurantId` (✨ Generated from Field `FavoriteListItem`.`restaurantId` of type `UUID!`)
+  """
+  restaurantId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `FavoriteListItem`.`favoriteList` of type `FavoriteList!`
+  """
+  favoriteList: FavoriteList_Key
+  """
+  ✨ Generated from Field `FavoriteListItem`.`restaurant` of type `Restaurant!`
+  """
+  restaurant: Restaurant_Key
+  """
+  ✨ Generated from Field `FavoriteListItem`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `FavoriteListItem`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `FavoriteListItem`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `FavoriteListItem`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `FavoriteListItem`.`notes` of type `String`
+  """
+  notes: String
+  """
+  ✨ `_expr` server value variant of `notes` (✨ Generated from Field `FavoriteListItem`.`notes` of type `String`)
+  """
+  notes_expr: String_Expr
+}
+"""
+✨ Generated filter input type for table 'FavoriteListItem'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input FavoriteListItem_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [FavoriteListItem_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: FavoriteListItem_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [FavoriteListItem_Filter!]
+  """
+  ✨ Generated from Field `FavoriteListItem`.`favoriteListId` of type `UUID!`
+  """
+  favoriteListId: UUID_Filter
+  """
+  ✨ Generated from Field `FavoriteListItem`.`restaurantId` of type `UUID!`
+  """
+  restaurantId: UUID_Filter
+  """
+  ✨ Generated from Field `FavoriteListItem`.`favoriteList` of type `FavoriteList!`
+  """
+  favoriteList: FavoriteList_Filter
+  """
+  ✨ Generated from Field `FavoriteListItem`.`restaurant` of type `Restaurant!`
+  """
+  restaurant: Restaurant_Filter
+  """
+  ✨ Generated from Field `FavoriteListItem`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `FavoriteListItem`.`notes` of type `String`
+  """
+  notes: String_Filter
+}
+"""
+✨ Generated first-row input type for table 'FavoriteListItem'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input FavoriteListItem_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [FavoriteListItem_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: FavoriteListItem_Filter
+}
+"""
+✨ Generated having input type for table 'FavoriteListItem'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input FavoriteListItem_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [FavoriteListItem_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: FavoriteListItem_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [FavoriteListItem_Having!]
+  """
+  ✨ Generated from Field `FavoriteListItem`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `FavoriteListItem`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `FavoriteListItem`.`favoriteListId_count` of type `Int!`
+  """
+  favoriteListId_count: Int_Filter
+  """
+  ✨ Generated from Field `FavoriteListItem`.`notes_count` of type `Int!`
+  """
+  notes_count: Int_Filter
+  """
+  ✨ Generated from Field `FavoriteListItem`.`restaurantId_count` of type `Int!`
+  """
+  restaurantId_count: Int_Filter
+  """
+  ✨ Generated from Field `FavoriteListItem`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `FavoriteListItem`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+}
+"""
+✨ Generated key input type for table 'FavoriteListItem'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input FavoriteListItem_Key {
+  """
+  ✨ Generated from Field `FavoriteListItem`.`favoriteListId` of type `UUID!`
+  """
+  favoriteListId: UUID
+  """
+  ✨ `_expr` server value variant of `favoriteListId` (✨ Generated from Field `FavoriteListItem`.`favoriteListId` of type `UUID!`)
+  """
+  favoriteListId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `FavoriteListItem`.`restaurantId` of type `UUID!`
+  """
+  restaurantId: UUID
+  """
+  ✨ `_expr` server value variant of `restaurantId` (✨ Generated from Field `FavoriteListItem`.`restaurantId` of type `UUID!`)
+  """
+  restaurantId_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'FavoriteListItem'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input FavoriteListItem_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: FavoriteListItem_Filter
+}
+"""
+✨ Generated order input type for table 'FavoriteListItem'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input FavoriteListItem_Order {
+  """
+  ✨ Generated from Field `FavoriteListItem`.`favoriteListId` of type `UUID!`
+  """
+  favoriteListId: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteListItem`.`restaurantId` of type `UUID!`
+  """
+  restaurantId: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteListItem`.`favoriteList` of type `FavoriteList!`
+  """
+  favoriteList: FavoriteList_Order
+  """
+  ✨ Generated from Field `FavoriteListItem`.`restaurant` of type `Restaurant!`
+  """
+  restaurant: Restaurant_Order
+  """
+  ✨ Generated from Field `FavoriteListItem`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteListItem`.`notes` of type `String`
+  """
+  notes: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteListItem`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteListItem`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteListItem`.`favoriteListId_count` of type `Int!`
+  """
+  favoriteListId_count: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteListItem`.`notes_count` of type `Int!`
+  """
+  notes_count: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteListItem`.`restaurantId_count` of type `Int!`
+  """
+  restaurantId_count: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteListItem`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `FavoriteListItem`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'Restaurant'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input Restaurant_Data {
+  """
+  ✨ Generated from Field `Restaurant`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Restaurant`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `Restaurant`.`address` of type `String!`
+  """
+  address: String
+  """
+  ✨ `_expr` server value variant of `address` (✨ Generated from Field `Restaurant`.`address` of type `String!`)
+  """
+  address_expr: String_Expr
+  """
+  ✨ Generated from Field `Restaurant`.`averageRating` of type `Float`
+  """
+  averageRating: Float
+  """
+  ✨ `_expr` server value variant of `averageRating` (✨ Generated from Field `Restaurant`.`averageRating` of type `Float`)
+  """
+  averageRating_expr: Float_Expr
+  """
+  ✨ `_update` server value variant of `averageRating` (✨ Generated from Field `Restaurant`.`averageRating` of type `Float`)
+  """
+  averageRating_update: [Float_Update!]
+  """
+  ✨ Generated from Field `Restaurant`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `Restaurant`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `Restaurant`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `Restaurant`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `Restaurant`.`cuisineType` of type `String!`
+  """
+  cuisineType: String
+  """
+  ✨ `_expr` server value variant of `cuisineType` (✨ Generated from Field `Restaurant`.`cuisineType` of type `String!`)
+  """
+  cuisineType_expr: String_Expr
+  """
+  ✨ Generated from Field `Restaurant`.`name` of type `String!`
+  """
+  name: String
+  """
+  ✨ `_expr` server value variant of `name` (✨ Generated from Field `Restaurant`.`name` of type `String!`)
+  """
+  name_expr: String_Expr
+  """
+  ✨ Generated from Field `Restaurant`.`phoneNumber` of type `String`
+  """
+  phoneNumber: String
+  """
+  ✨ `_expr` server value variant of `phoneNumber` (✨ Generated from Field `Restaurant`.`phoneNumber` of type `String`)
+  """
+  phoneNumber_expr: String_Expr
+  """
+  ✨ Generated from Field `Restaurant`.`website` of type `String`
+  """
+  website: String
+  """
+  ✨ `_expr` server value variant of `website` (✨ Generated from Field `Restaurant`.`website` of type `String`)
+  """
+  website_expr: String_Expr
+}
+"""
+✨ Generated filter input type for table 'Restaurant'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input Restaurant_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [Restaurant_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: Restaurant_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [Restaurant_Filter!]
+  """
+  ✨ Generated from Field `Restaurant`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`address` of type `String!`
+  """
+  address: String_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`averageRating` of type `Float`
+  """
+  averageRating: Float_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`cuisineType` of type `String!`
+  """
+  cuisineType: String_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`name` of type `String!`
+  """
+  name: String_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`phoneNumber` of type `String`
+  """
+  phoneNumber: String_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`website` of type `String`
+  """
+  website: String_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`favoriteListItems_on_restaurant` of type `[FavoriteListItem!]!`
+  """
+  favoriteListItems_on_restaurant: FavoriteListItem_ListFilter
+  """
+  ✨ Generated from Field `Restaurant`.`reviews_on_restaurant` of type `[Review!]!`
+  """
+  reviews_on_restaurant: Review_ListFilter
+  """
+  ✨ Generated from Field `Restaurant`.`favoriteLists_via_FavoriteListItem` of type `[FavoriteList!]!`
+  """
+  favoriteLists_via_FavoriteListItem: FavoriteList_ListFilter
+}
+"""
+✨ Generated first-row input type for table 'Restaurant'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input Restaurant_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [Restaurant_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: Restaurant_Filter
+}
+"""
+✨ Generated having input type for table 'Restaurant'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input Restaurant_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [Restaurant_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: Restaurant_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [Restaurant_Having!]
+  """
+  ✨ Generated from Field `Restaurant`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`address_count` of type `Int!`
+  """
+  address_count: Int_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`averageRating_count` of type `Int!`
+  """
+  averageRating_count: Int_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`cuisineType_count` of type `Int!`
+  """
+  cuisineType_count: Int_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`name_count` of type `Int!`
+  """
+  name_count: Int_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`phoneNumber_count` of type `Int!`
+  """
+  phoneNumber_count: Int_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`website_count` of type `Int!`
+  """
+  website_count: Int_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`averageRating_sum` of type `Float`
+  """
+  averageRating_sum: Float_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`averageRating_avg` of type `Float`
+  """
+  averageRating_avg: Float_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`averageRating_min` of type `Float`
+  """
+  averageRating_min: Float_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`averageRating_max` of type `Float`
+  """
+  averageRating_max: Float_Filter
+  """
+  ✨ Generated from Field `Restaurant`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+}
+"""
+✨ Generated key input type for table 'Restaurant'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input Restaurant_Key {
+  """
+  ✨ Generated from Field `Restaurant`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Restaurant`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'Restaurant'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input Restaurant_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: Restaurant_Filter
+}
+"""
+✨ Generated order input type for table 'Restaurant'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input Restaurant_Order {
+  """
+  ✨ Generated from Field `Restaurant`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`address` of type `String!`
+  """
+  address: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`averageRating` of type `Float`
+  """
+  averageRating: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`cuisineType` of type `String!`
+  """
+  cuisineType: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`name` of type `String!`
+  """
+  name: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`phoneNumber` of type `String`
+  """
+  phoneNumber: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`website` of type `String`
+  """
+  website: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`address_count` of type `Int!`
+  """
+  address_count: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`averageRating_count` of type `Int!`
+  """
+  averageRating_count: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`cuisineType_count` of type `Int!`
+  """
+  cuisineType_count: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`name_count` of type `Int!`
+  """
+  name_count: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`phoneNumber_count` of type `Int!`
+  """
+  phoneNumber_count: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`website_count` of type `Int!`
+  """
+  website_count: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`averageRating_sum` of type `Float`
+  """
+  averageRating_sum: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`averageRating_avg` of type `Float`
+  """
+  averageRating_avg: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`averageRating_min` of type `Float`
+  """
+  averageRating_min: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`averageRating_max` of type `Float`
+  """
+  averageRating_max: OrderDirection
+  """
+  ✨ Generated from Field `Restaurant`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'Review'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input Review_Data {
+  """
+  ✨ Generated from Field `Review`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Review`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `Review`.`restaurantId` of type `UUID!`
+  """
+  restaurantId: UUID
+  """
+  ✨ `_expr` server value variant of `restaurantId` (✨ Generated from Field `Review`.`restaurantId` of type `UUID!`)
+  """
+  restaurantId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `Review`.`userId` of type `UUID!`
+  """
+  userId: UUID
+  """
+  ✨ `_expr` server value variant of `userId` (✨ Generated from Field `Review`.`userId` of type `UUID!`)
+  """
+  userId_expr: UUID_Expr
+  """
+  ✨ Generated from Field `Review`.`restaurant` of type `Restaurant!`
+  """
+  restaurant: Restaurant_Key
+  """
+  ✨ Generated from Field `Review`.`user` of type `User!`
+  """
+  user: User_Key
+  """
+  ✨ Generated from Field `Review`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `Review`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `Review`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `Review`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `Review`.`photos` of type `[String]`
+  """
+  photos: [String!]
+  """
+  ✨ `_update` server value variant of `photos` (✨ Generated from Field `Review`.`photos` of type `[String]`)
+  """
+  photos_update: [String_ListUpdate!]
+  """
+  ✨ Generated from Field `Review`.`rating` of type `Int!`
+  """
+  rating: Int
+  """
+  ✨ `_expr` server value variant of `rating` (✨ Generated from Field `Review`.`rating` of type `Int!`)
+  """
+  rating_expr: Int_Expr
+  """
+  ✨ `_update` server value variant of `rating` (✨ Generated from Field `Review`.`rating` of type `Int!`)
+  """
+  rating_update: [Int_Update!]
+  """
+  ✨ Generated from Field `Review`.`reviewText` of type `String!`
+  """
+  reviewText: String
+  """
+  ✨ `_expr` server value variant of `reviewText` (✨ Generated from Field `Review`.`reviewText` of type `String!`)
+  """
+  reviewText_expr: String_Expr
+  """
+  ✨ Generated from Field `Review`.`updatedAt` of type `Timestamp!`
+  """
+  updatedAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `updatedAt` (✨ Generated from Field `Review`.`updatedAt` of type `Timestamp!`)
+  """
+  updatedAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `updatedAt` (✨ Generated from Field `Review`.`updatedAt` of type `Timestamp!`)
+  """
+  updatedAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `updatedAt` (✨ Generated from Field `Review`.`updatedAt` of type `Timestamp!`)
+  """
+  updatedAt_update: [Timestamp_Update!]
+}
+"""
+✨ Generated filter input type for table 'Review'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input Review_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [Review_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: Review_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [Review_Filter!]
+  """
+  ✨ Generated from Field `Review`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `Review`.`restaurantId` of type `UUID!`
+  """
+  restaurantId: UUID_Filter
+  """
+  ✨ Generated from Field `Review`.`userId` of type `UUID!`
+  """
+  userId: UUID_Filter
+  """
+  ✨ Generated from Field `Review`.`restaurant` of type `Restaurant!`
+  """
+  restaurant: Restaurant_Filter
+  """
+  ✨ Generated from Field `Review`.`user` of type `User!`
+  """
+  user: User_Filter
+  """
+  ✨ Generated from Field `Review`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `Review`.`photos` of type `[String]`
+  """
+  photos: String_ListFilter
+  """
+  ✨ Generated from Field `Review`.`rating` of type `Int!`
+  """
+  rating: Int_Filter
+  """
+  ✨ Generated from Field `Review`.`reviewText` of type `String!`
+  """
+  reviewText: String_Filter
+  """
+  ✨ Generated from Field `Review`.`updatedAt` of type `Timestamp!`
+  """
+  updatedAt: Timestamp_Filter
+}
+"""
+✨ Generated first-row input type for table 'Review'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input Review_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [Review_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: Review_Filter
+}
+"""
+✨ Generated having input type for table 'Review'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input Review_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [Review_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: Review_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [Review_Having!]
+  """
+  ✨ Generated from Field `Review`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `Review`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `Review`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `Review`.`rating_count` of type `Int!`
+  """
+  rating_count: Int_Filter
+  """
+  ✨ Generated from Field `Review`.`restaurantId_count` of type `Int!`
+  """
+  restaurantId_count: Int_Filter
+  """
+  ✨ Generated from Field `Review`.`reviewText_count` of type `Int!`
+  """
+  reviewText_count: Int_Filter
+  """
+  ✨ Generated from Field `Review`.`updatedAt_count` of type `Int!`
+  """
+  updatedAt_count: Int_Filter
+  """
+  ✨ Generated from Field `Review`.`userId_count` of type `Int!`
+  """
+  userId_count: Int_Filter
+  """
+  ✨ Generated from Field `Review`.`rating_sum` of type `Int`
+  """
+  rating_sum: Int_Filter
+  """
+  ✨ Generated from Field `Review`.`rating_avg` of type `Float`
+  """
+  rating_avg: Float_Filter
+  """
+  ✨ Generated from Field `Review`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `Review`.`rating_min` of type `Int`
+  """
+  rating_min: Int_Filter
+  """
+  ✨ Generated from Field `Review`.`updatedAt_min` of type `Timestamp`
+  """
+  updatedAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `Review`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+  """
+  ✨ Generated from Field `Review`.`rating_max` of type `Int`
+  """
+  rating_max: Int_Filter
+  """
+  ✨ Generated from Field `Review`.`updatedAt_max` of type `Timestamp`
+  """
+  updatedAt_max: Timestamp_Filter
+}
+"""
+✨ Generated key input type for table 'Review'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input Review_Key {
+  """
+  ✨ Generated from Field `Review`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `Review`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'Review'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input Review_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: Review_Filter
+}
+"""
+✨ Generated order input type for table 'Review'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input Review_Order {
+  """
+  ✨ Generated from Field `Review`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`restaurantId` of type `UUID!`
+  """
+  restaurantId: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`userId` of type `UUID!`
+  """
+  userId: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`restaurant` of type `Restaurant!`
+  """
+  restaurant: Restaurant_Order
+  """
+  ✨ Generated from Field `Review`.`user` of type `User!`
+  """
+  user: User_Order
+  """
+  ✨ Generated from Field `Review`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`rating` of type `Int!`
+  """
+  rating: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`reviewText` of type `String!`
+  """
+  reviewText: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`updatedAt` of type `Timestamp!`
+  """
+  updatedAt: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`rating_count` of type `Int!`
+  """
+  rating_count: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`restaurantId_count` of type `Int!`
+  """
+  restaurantId_count: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`reviewText_count` of type `Int!`
+  """
+  reviewText_count: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`updatedAt_count` of type `Int!`
+  """
+  updatedAt_count: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`userId_count` of type `Int!`
+  """
+  userId_count: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`rating_sum` of type `Int`
+  """
+  rating_sum: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`rating_avg` of type `Float`
+  """
+  rating_avg: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`rating_min` of type `Int`
+  """
+  rating_min: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`updatedAt_min` of type `Timestamp`
+  """
+  updatedAt_min: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`rating_max` of type `Int`
+  """
+  rating_max: OrderDirection
+  """
+  ✨ Generated from Field `Review`.`updatedAt_max` of type `Timestamp`
+  """
+  updatedAt_max: OrderDirection
+}
+"""
+✨ Generated data input type for table 'User'. It includes all necessary fields for creating or upserting rows into table.
+"""
+input User_Data {
+  """
+  ✨ Generated from Field `User`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `User`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+  """
+  ✨ Generated from Field `User`.`bio` of type `String`
+  """
+  bio: String
+  """
+  ✨ `_expr` server value variant of `bio` (✨ Generated from Field `User`.`bio` of type `String`)
+  """
+  bio_expr: String_Expr
+  """
+  ✨ Generated from Field `User`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp
+  """
+  ✨ `_expr` server value variant of `createdAt` (✨ Generated from Field `User`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_expr: Timestamp_Expr
+  """
+  ✨ `_time` server value variant of `createdAt` (✨ Generated from Field `User`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_time: Timestamp_Relative
+  """
+  ✨ `_update` server value variant of `createdAt` (✨ Generated from Field `User`.`createdAt` of type `Timestamp!`)
+  """
+  createdAt_update: [Timestamp_Update!]
+  """
+  ✨ Generated from Field `User`.`displayName` of type `String`
+  """
+  displayName: String
+  """
+  ✨ `_expr` server value variant of `displayName` (✨ Generated from Field `User`.`displayName` of type `String`)
+  """
+  displayName_expr: String_Expr
+  """
+  ✨ Generated from Field `User`.`email` of type `String!`
+  """
+  email: String
+  """
+  ✨ `_expr` server value variant of `email` (✨ Generated from Field `User`.`email` of type `String!`)
+  """
+  email_expr: String_Expr
+  """
+  ✨ Generated from Field `User`.`profilePictureUrl` of type `String`
+  """
+  profilePictureUrl: String
+  """
+  ✨ `_expr` server value variant of `profilePictureUrl` (✨ Generated from Field `User`.`profilePictureUrl` of type `String`)
+  """
+  profilePictureUrl_expr: String_Expr
+  """
+  ✨ Generated from Field `User`.`username` of type `String!`
+  """
+  username: String
+  """
+  ✨ `_expr` server value variant of `username` (✨ Generated from Field `User`.`username` of type `String!`)
+  """
+  username_expr: String_Expr
+}
+"""
+✨ Generated filter input type for table 'User'. This input allows filtering objects using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input User_Filter {
+  """
+  Apply multiple filter conditions using `AND` logic.
+  """
+  _and: [User_Filter!]
+  """
+  Negate the result of the provided filter condition.
+  """
+  _not: User_Filter
+  """
+  Apply multiple filter conditions using `OR` logic.
+  """
+  _or: [User_Filter!]
+  """
+  ✨ Generated from Field `User`.`id` of type `UUID!`
+  """
+  id: UUID_Filter
+  """
+  ✨ Generated from Field `User`.`bio` of type `String`
+  """
+  bio: String_Filter
+  """
+  ✨ Generated from Field `User`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: Timestamp_Filter
+  """
+  ✨ Generated from Field `User`.`displayName` of type `String`
+  """
+  displayName: String_Filter
+  """
+  ✨ Generated from Field `User`.`email` of type `String!`
+  """
+  email: String_Filter
+  """
+  ✨ Generated from Field `User`.`profilePictureUrl` of type `String`
+  """
+  profilePictureUrl: String_Filter
+  """
+  ✨ Generated from Field `User`.`username` of type `String!`
+  """
+  username: String_Filter
+  """
+  ✨ Generated from Field `User`.`favoriteLists_on_user` of type `[FavoriteList!]!`
+  """
+  favoriteLists_on_user: FavoriteList_ListFilter
+  """
+  ✨ Generated from Field `User`.`reviews_on_user` of type `[Review!]!`
+  """
+  reviews_on_user: Review_ListFilter
+}
+"""
+✨ Generated first-row input type for table 'User'. This input selects the first row matching the filter criteria, ordered according to the specified conditions.
+"""
+input User_FirstRow {
+  """
+  Order the result by the specified fields.
+  """
+  orderBy: [User_Order!]
+  """
+  Filters rows based on the specified conditions.
+  """
+  where: User_Filter
+}
+"""
+✨ Generated having input type for table 'User'. This input allows you to filter groups during aggregate queries using various conditions. Use `_or`, `_and`, and `_not` to compose complex filters.
+"""
+input User_Having {
+  """
+  Apply multiple Having conditions using `AND` logic.
+  """
+  _and: [User_Having!]
+  """
+  Whether to apply DISTINCT to the aggregate function.
+  """
+  _distinct: Boolean
+  """
+  Negate the result of the provided Having condition.
+  """
+  _not: User_Having
+  """
+  Apply multiple Having conditions using `OR` logic.
+  """
+  _or: [User_Having!]
+  """
+  ✨ Generated from Field `User`.`_count` of type `Int!`
+  """
+  _count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`bio_count` of type `Int!`
+  """
+  bio_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`displayName_count` of type `Int!`
+  """
+  displayName_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`email_count` of type `Int!`
+  """
+  email_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`id_count` of type `Int!`
+  """
+  id_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`profilePictureUrl_count` of type `Int!`
+  """
+  profilePictureUrl_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`username_count` of type `Int!`
+  """
+  username_count: Int_Filter
+  """
+  ✨ Generated from Field `User`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: Timestamp_Filter
+  """
+  ✨ Generated from Field `User`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: Timestamp_Filter
+}
+"""
+✨ Generated key input type for table 'User'. It represents the primary key fields used to uniquely identify a row in the table.
+"""
+input User_Key {
+  """
+  ✨ Generated from Field `User`.`id` of type `UUID!`
+  """
+  id: UUID
+  """
+  ✨ `_expr` server value variant of `id` (✨ Generated from Field `User`.`id` of type `UUID!`)
+  """
+  id_expr: UUID_Expr
+}
+"""
+✨ Generated list filter input type for table 'User'. This input applies filtering logic based on the count or existence of related objects that matches certain criteria.
+"""
+input User_ListFilter {
+  """
+  The desired number of objects that match the condition (defaults to at least one).
+  """
+  count: Int_Filter = {gt:0}
+  """
+  Condition of the related objects to filter for.
+  """
+  exist: User_Filter
+}
+"""
+✨ Generated order input type for table 'User'. This input defines the sorting order of rows in query results based on one or more fields.
+"""
+input User_Order {
+  """
+  ✨ Generated from Field `User`.`id` of type `UUID!`
+  """
+  id: OrderDirection
+  """
+  ✨ Generated from Field `User`.`bio` of type `String`
+  """
+  bio: OrderDirection
+  """
+  ✨ Generated from Field `User`.`createdAt` of type `Timestamp!`
+  """
+  createdAt: OrderDirection
+  """
+  ✨ Generated from Field `User`.`displayName` of type `String`
+  """
+  displayName: OrderDirection
+  """
+  ✨ Generated from Field `User`.`email` of type `String!`
+  """
+  email: OrderDirection
+  """
+  ✨ Generated from Field `User`.`profilePictureUrl` of type `String`
+  """
+  profilePictureUrl: OrderDirection
+  """
+  ✨ Generated from Field `User`.`username` of type `String!`
+  """
+  username: OrderDirection
+  """
+  ✨ Generated from Field `User`.`_count` of type `Int!`
+  """
+  _count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`bio_count` of type `Int!`
+  """
+  bio_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`createdAt_count` of type `Int!`
+  """
+  createdAt_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`displayName_count` of type `Int!`
+  """
+  displayName_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`email_count` of type `Int!`
+  """
+  email_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`id_count` of type `Int!`
+  """
+  id_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`profilePictureUrl_count` of type `Int!`
+  """
+  profilePictureUrl_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`username_count` of type `Int!`
+  """
+  username_count: OrderDirection
+  """
+  ✨ Generated from Field `User`.`createdAt_min` of type `Timestamp`
+  """
+  createdAt_min: OrderDirection
+  """
+  ✨ Generated from Field `User`.`createdAt_max` of type `Timestamp`
+  """
+  createdAt_max: OrderDirection
+}

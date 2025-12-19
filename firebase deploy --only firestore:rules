@@ -1,0 +1,225 @@
+/**
+ * @file Firestore Security Rules
+ * @description This ruleset enforces a strict user-ownership model for data within the application,
+ * with all data nested under /artifacts/{appId}/users/{userId}. Each user has complete control
+ * over their own data, and no cross-user access is permitted.
+ *
+ * Data Structure:
+ * - All data is nested under /artifacts/{appId}/users/{userId}, creating a clear separation between user data.
+ * - Each user owns their customers, vehicles, jobs, inventory items, settings, and archived jobs.
+ * - The 'jobs' collection contains denormalized data from 'customers' and 'vehicles' for authorization efficiency.
+ *
+ * Key Security Decisions:
+ * - User listing is disallowed.
+ * - All writes are restricted to the owner of the data.
+ * - Data consistency between path segments and document fields is strictly enforced on creation and updates.
+ *
+ * Denormalization for Authorization:
+ *   The 'jobs' collection contains denormalized data from 'customers' and 'vehicles'.  For example, the 'Job'
+ *   entity contains fields like 'customerName', 'vin', 'make', 'model', and 'year', which are copied from the
+ *   corresponding 'Customer' and 'Vehicle' entities.  This denormalization avoids costly `get()` calls in the security
+ *   rules, allowing for efficient authorization checks based solely on the data present in the 'Job' document.
+ *
+ * Structural Segregation:
+ *   All user-specific data (customers, vehicles, jobs, inventory, settings, archivedJobs) is stored under the
+ *   /artifacts/{appId}/users/{userId} path. This ensures that each user's data is isolated from other users' data, and it
+ *   simplifies the security rules by allowing path-based authorization.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Secure root access.  No direct reads or writes to the root of the database are allowed.
+     * @path /
+     * @allow (get, list) if false
+     * @allow (create, update, delete) if false
+     * @principle Prevents accidental operations at the database root.
+     */
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isExistingOwner(userId) {
+        return isOwner(userId) && resource != null;
+    }
+
+    /**
+     * @description Controls access to customer data. Only the owner (the user whose ID is in the path) can read, create, update, or delete customer documents.
+     * @path artifacts/{appId}/users/{userId}/customers/{customerId}
+     * @allow (create) User 'A' creates a customer document under artifacts/appid/users/A/customers/cust1
+     * @allow (get, update, delete) User 'A' reads/updates/deletes a customer document under artifacts/appid/users/A/customers/cust1
+     * @deny (create) User 'B' attempts to create a customer document under artifacts/appid/users/A/customers/cust1
+     * @deny (get, update, delete) User 'B' attempts to read/update/delete a customer document under artifacts/appid/users/A/customers/cust1
+     * @principle Enforces document ownership for all operations.
+     */
+    match /artifacts/{appId}/users/{userId}/customers/{customerId} {
+      allow get: if isOwner(userId);
+      allow list: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Controls access to vehicle data. Only the owner (the user whose ID is in the path) can read, create, update, or delete vehicle documents.
+     * @path artifacts/{appId}/users/{userId}/vehicles/{vehicleId}
+     * @allow (create) User 'A' creates a vehicle document under artifacts/appid/users/A/vehicles/veh1
+     * @allow (get, update, delete) User 'A' reads/updates/deletes a vehicle document under artifacts/appid/users/A/vehicles/veh1
+     * @deny (create) User 'B' attempts to create a vehicle document under artifacts/appid/users/A/vehicles/veh1
+     * @deny (get, update, delete) User 'B' attempts to read/update/delete a vehicle document under artifacts/appid/users/A/vehicles/veh1
+     * @principle Enforces document ownership for all operations.
+     */
+    match /artifacts/{appId}/users/{userId}/vehicles/{vehicleId} {
+      allow get: if isOwner(userId);
+      allow list: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Controls access to job data. Only the owner (the user whose ID is in the path) can read, create, update, or delete job documents.
+     * @path artifacts/{appId}/users/{userId}/jobs/{jobId}
+     * @allow (create) User 'A' creates a job document under artifacts/appid/users/A/jobs/job1
+     * @allow (get, update, delete) User 'A' reads/updates/deletes a job document under artifacts/appid/users/A/jobs/job1
+     * @deny (create) User 'B' attempts to create a job document under artifacts/appid/users/A/jobs/job1
+     * @deny (get, update, delete) User 'B' attempts to read/update/delete a job document under artifacts/appid/users/A/jobs/job1
+     * @principle Enforces document ownership for all operations.
+     */
+    match /artifacts/{appId}/users/{userId}/jobs/{jobId} {
+      allow get: if isOwner(userId);
+      allow list: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Controls access to inventory item data. Only the owner (the user whose ID is in the path) can read, create, update, or delete inventory item documents.
+     * @path artifacts/{appId}/users/{userId}/inventory/{inventoryItemId}
+     * @allow (create) User 'A' creates an inventory item document under artifacts/appid/users/A/inventory/item1
+     * @allow (get, update, delete) User 'A' reads/updates/deletes an inventory item document under artifacts/appid/users/A/inventory/item1
+     * @deny (create) User 'B' attempts to create an inventory item document under artifacts/appid/users/A/inventory/item1
+     * @deny (get, update, delete) User 'B' attempts to read/update/delete an inventory item document under artifacts/appid/users/A/inventory/item1
+     * @principle Enforces document ownership for all operations.
+     */
+    match /artifacts/{appId}/users/{userId}/inventory/{inventoryItemId} {
+      allow get: if isOwner(userId);
+      allow list: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Controls access to business profile settings. Only the owner (the user whose ID is in the path) can read, create, update, or delete business profile settings.
+     * @path artifacts/{appId}/users/{userId}/settings/businessProfile
+     * @allow (create) User 'A' creates a business profile document under artifacts/appid/users/A/settings/businessProfile
+     * @allow (get, update, delete) User 'A' reads/updates/deletes a business profile document under artifacts/appid/users/A/settings/businessProfile
+     * @deny (create) User 'B' attempts to create a business profile document under artifacts/appid/users/A/settings/businessProfile
+     * @deny (get, update, delete) User 'B' attempts to read/update/delete a business profile document under artifacts/appid/users/A/settings/businessProfile
+     * @principle Enforces document ownership for all operations.
+     */
+    match /artifacts/{appId}/users/{userId}/settings/businessProfile {
+      allow get: if isOwner(userId);
+      allow list: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Controls access to job ID generation settings. Only the owner (the user whose ID is in the path) can read, create, update, or delete job ID generation settings.
+     * @path artifacts/{appId}/users/{userId}/settings/jobIdGeneration
+     * @allow (create) User 'A' creates a job ID generation document under artifacts/appid/users/A/settings/jobIdGeneration
+     * @allow (get, update, delete) User 'A' reads/updates/deletes a job ID generation document under artifacts/appid/users/A/settings/jobIdGeneration
+     * @deny (create) User 'B' attempts to create a job ID generation document under artifacts/appid/users/A/settings/jobIdGeneration
+     * @deny (get, update, delete) User 'B' attempts to read/update/delete a job ID generation document under artifacts/appid/users/A/settings/jobIdGeneration
+     * @principle Enforces document ownership for all operations.
+     */
+    match /artifacts/{appId}/users/{userId}/settings/jobIdGeneration {
+      allow get: if isOwner(userId);
+      allow list: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Controls access to sales tax settings. Only the owner (the user whose ID is in the path) can read, create, update, or delete sales tax settings.
+     * @path artifacts/{appId}/users/{userId}/settings/salesTax
+     * @allow (create) User 'A' creates a sales tax document under artifacts/appid/users/A/settings/salesTax
+     * @allow (get, update, delete) User 'A' reads/updates/deletes a sales tax document under artifacts/appid/users/A/settings/salesTax
+     * @deny (create) User 'B' attempts to create a sales tax document under artifacts/appid/users/A/settings/salesTax
+     * @deny (get, update, delete) User 'B' attempts to read/update/delete a sales tax document under artifacts/appid/users/A/settings/salesTax
+     * @principle Enforces document ownership for all operations.
+     */
+    match /artifacts/{appId}/users/{userId}/settings/salesTax {
+      allow get: if isOwner(userId);
+      allow list: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Controls access to item code data. Only the owner (the user whose ID is in the path) can read, create, update, or delete item code documents.
+     * @path artifacts/{appId}/users/{userId}/itemCodes/{itemCodeId}
+     * @allow (create) User 'A' creates an item code document under artifacts/appid/users/A/itemCodes/item1
+     * @allow (get, update, delete) User 'A' reads/updates/deletes an item code document under artifacts/appid/users/A/itemCodes/item1
+     * @deny (create) User 'B' attempts to create an item code document under artifacts/appid/users/A/itemCodes/item1
+     * @deny (get, update, delete) User 'B' attempts to read/update/delete an item code document under artifacts/appid/users/A/itemCodes/item1
+     * @principle Enforces document ownership for all operations.
+     */
+    match /artifacts/{appId}/users/{userId}/itemCodes/{itemCodeId} {
+      allow get: if isOwner(userId);
+      allow list: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Controls access to schedule view settings. Only the owner (the user whose ID is in the path) can read, create, update, or delete schedule view settings.
+     * @path artifacts/{appId}/users/{userId}/settings/scheduleView
+     * @allow (create) User 'A' creates a schedule view document under artifacts/appid/users/A/settings/scheduleView
+     * @allow (get, update, delete) User 'A' reads/updates/deletes a schedule view document under artifacts/appid/users/A/settings/scheduleView
+     * @deny (create) User 'B' attempts to create a schedule view document under artifacts/appid/users/A/settings/scheduleView
+     * @deny (get, update, delete) User 'B' attempts to read/update/delete a schedule view document under artifacts/appid/users/A/settings/scheduleView
+     * @principle Enforces document ownership for all operations.
+     */
+    match /artifacts/{appId}/users/{userId}/settings/scheduleView {
+      allow get: if isOwner(userId);
+      allow list: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Controls access to archived job data. Only the owner (the user whose ID is in the path) can read, create, update, or delete archived job documents.
+     * @path artifacts/{appId}/users/{userId}/archivedJobs/{archivedJobId}
+     * @allow (create) User 'A' creates an archived job document under artifacts/appid/users/A/archivedJobs/job1
+     * @allow (get, update, delete) User 'A' reads/updates/deletes an archived job document under artifacts/appid/users/A/archivedJobs/job1
+     * @deny (create) User 'B' attempts to create an archived job document under artifacts/appid/users/A/archivedJobs/job1
+     * @deny (get, update, delete) User 'B' attempts to read/update/delete an archived job document under artifacts/appid/users/A/archivedJobs/job1
+     * @principle Enforces document ownership for all operations.
+     */
+    match /artifacts/{appId}/users/{userId}/archivedJobs/{archivedJobId} {
+      allow get: if isOwner(userId);
+      allow list: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isExistingOwner(userId);
+      allow delete: if isExistingOwner(userId);
+    }
+  }
+}

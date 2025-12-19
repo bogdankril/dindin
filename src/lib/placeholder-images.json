@@ -1,0 +1,6 @@
+{
+  "csvImportExample": {
+    "src": "https://picsum.photos/seed/csv-example/800/200",
+    "hint": "spreadsheet data"
+  }
+}

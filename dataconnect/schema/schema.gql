@@ -1,0 +1,43 @@
+type User @table {
+  username: String!
+  email: String!
+  createdAt: Timestamp!
+  profilePictureUrl: String
+  bio: String
+  displayName: String
+}
+
+type Restaurant @table {
+  name: String!
+  address: String!
+  cuisineType: String!
+  createdAt: Timestamp!
+  phoneNumber: String
+  website: String
+  averageRating: Float
+}
+
+type Review @table {
+  user: User!
+  restaurant: Restaurant!
+  rating: Int!
+  reviewText: String!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  photos: [String]
+}
+
+type FavoriteList @table {
+  user: User!
+  name: String!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  description: String
+}
+
+type FavoriteListItem @table(key: ["favoriteList", "restaurant"]) {
+  favoriteList: FavoriteList!
+  restaurant: Restaurant!
+  createdAt: Timestamp!
+  notes: String
+}

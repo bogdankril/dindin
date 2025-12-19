@@ -1,0 +1,552 @@
+extend type Mutation {
+  """
+  ✨ Insert a single `FavoriteList` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  favoriteList_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: FavoriteList_Data!
+  ): FavoriteList_KeyOutput! @fdc_generated(from: "FavoriteList", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `FavoriteListItem` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  favoriteListItem_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: FavoriteListItem_Data!
+  ): FavoriteListItem_KeyOutput! @fdc_generated(from: "FavoriteListItem", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Restaurant` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  restaurant_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Restaurant_Data!
+  ): Restaurant_KeyOutput! @fdc_generated(from: "Restaurant", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `Review` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  review_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: Review_Data!
+  ): Review_KeyOutput! @fdc_generated(from: "Review", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert a single `User` into the table and return its key. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insert(
+    """
+    Data object to insert into the table.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: INSERT_SINGLE)
+  """
+  ✨ Insert `FavoriteList` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  favoriteList_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [FavoriteList_Data!]!
+  ): [FavoriteList_KeyOutput!]! @fdc_generated(from: "FavoriteList", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `FavoriteListItem` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  favoriteListItem_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [FavoriteListItem_Data!]!
+  ): [FavoriteListItem_KeyOutput!]! @fdc_generated(from: "FavoriteListItem", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Restaurant` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  restaurant_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Restaurant_Data!]!
+  ): [Restaurant_KeyOutput!]! @fdc_generated(from: "Restaurant", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `Review` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  review_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [Review_Data!]!
+  ): [Review_KeyOutput!]! @fdc_generated(from: "Review", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert `User` objects into the table and return their keys. Columns not specified in `data` will receive defaults (e.g. `null`).
+  """
+  user_insertMany(
+    """
+    List of data objects to insert into the table.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: INSERT_MULTIPLE)
+  """
+  ✨ Insert or update a single `FavoriteList` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `FavoriteList`.
+  """
+  favoriteList_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: FavoriteList_Data!
+  ): FavoriteList_KeyOutput! @fdc_generated(from: "FavoriteList", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `FavoriteListItem` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `FavoriteListItem`.
+  """
+  favoriteListItem_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: FavoriteListItem_Data!
+  ): FavoriteListItem_KeyOutput! @fdc_generated(from: "FavoriteListItem", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Restaurant` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Restaurant`.
+  """
+  restaurant_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Restaurant_Data!
+  ): Restaurant_KeyOutput! @fdc_generated(from: "Restaurant", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `Review` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Review`.
+  """
+  review_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: Review_Data!
+  ): Review_KeyOutput! @fdc_generated(from: "Review", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update a single `User` into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsert(
+    """
+    Data object to insert or update if it already exists.
+    """
+    data: User_Data!
+  ): User_KeyOutput! @fdc_generated(from: "User", purpose: UPSERT_SINGLE)
+  """
+  ✨ Insert or update `FavoriteList` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `FavoriteList`.
+  """
+  favoriteList_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [FavoriteList_Data!]!
+  ): [FavoriteList_KeyOutput!]! @fdc_generated(from: "FavoriteList", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `FavoriteListItem` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `FavoriteListItem`.
+  """
+  favoriteListItem_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [FavoriteListItem_Data!]!
+  ): [FavoriteListItem_KeyOutput!]! @fdc_generated(from: "FavoriteListItem", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Restaurant` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Restaurant`.
+  """
+  restaurant_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Restaurant_Data!]!
+  ): [Restaurant_KeyOutput!]! @fdc_generated(from: "Restaurant", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `Review` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `Review`.
+  """
+  review_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [Review_Data!]!
+  ): [Review_KeyOutput!]! @fdc_generated(from: "Review", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Insert or update `User` objects into the table, based on the primary key. Returns the key of the newly inserted or existing updated `User`.
+  """
+  user_upsertMany(
+    """
+    List of data objects to insert or update if it already exists.
+    """
+    data: [User_Data!]!
+  ): [User_KeyOutput!]! @fdc_generated(from: "User", purpose: UPSERT_MULTIPLE)
+  """
+  ✨ Update a single `FavoriteList` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `FavoriteList` or `null` if not found.
+  """
+  favoriteList_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: FavoriteList_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: FavoriteList_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: FavoriteList_Data!
+  ): FavoriteList_KeyOutput @fdc_generated(from: "FavoriteList", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `FavoriteListItem` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `FavoriteListItem` or `null` if not found.
+  """
+  favoriteListItem_update(
+    """
+    The key used to identify the object.
+    """
+    key: FavoriteListItem_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: FavoriteListItem_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: FavoriteListItem_Data!
+  ): FavoriteListItem_KeyOutput @fdc_generated(from: "FavoriteListItem", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Restaurant` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Restaurant` or `null` if not found.
+  """
+  restaurant_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Restaurant_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Restaurant_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Restaurant_Data!
+  ): Restaurant_KeyOutput @fdc_generated(from: "Restaurant", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `Review` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `Review` or `null` if not found.
+  """
+  review_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Review_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Review_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: Review_Data!
+  ): Review_KeyOutput @fdc_generated(from: "Review", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update a single `User` based on `id`, `key` or `first`, setting columns specified in `data`. Returns the key of the updated `User` or `null` if not found.
+  """
+  user_update(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+
+    """
+    Data object containing fields to be updated.
+    """
+    data: User_Data!
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: UPDATE_SINGLE)
+  """
+  ✨ Update `FavoriteList` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  favoriteList_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: FavoriteList_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: FavoriteList_Data!
+  ): Int! @fdc_generated(from: "FavoriteList", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `FavoriteListItem` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  favoriteListItem_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: FavoriteListItem_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: FavoriteListItem_Data!
+  ): Int! @fdc_generated(from: "FavoriteListItem", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Restaurant` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  restaurant_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Restaurant_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Restaurant_Data!
+  ): Int! @fdc_generated(from: "Restaurant", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `Review` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  review_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: Review_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: Review_Data!
+  ): Int! @fdc_generated(from: "Review", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Update `User` objects matching `where` conditions (or `all`, if true) according to `data`. Returns the number of rows updated.
+  """
+  user_updateMany(
+    """
+    Filter condition to specify which rows to update.
+    """
+    where: User_Filter
+
+    """
+    Set to true to update all rows.
+    """
+    all: Boolean = false
+
+    """
+    Data object containing fields to update.
+    """
+    data: User_Data!
+  ): Int! @fdc_generated(from: "User", purpose: UPDATE_MULTIPLE)
+  """
+  ✨ Delete a single `FavoriteList` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  favoriteList_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: FavoriteList_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: FavoriteList_FirstRow
+  ): FavoriteList_KeyOutput @fdc_generated(from: "FavoriteList", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `FavoriteListItem` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  favoriteListItem_delete(
+    """
+    The key used to identify the object.
+    """
+    key: FavoriteListItem_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: FavoriteListItem_FirstRow
+  ): FavoriteListItem_KeyOutput @fdc_generated(from: "FavoriteListItem", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Restaurant` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  restaurant_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Restaurant_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Restaurant_FirstRow
+  ): Restaurant_KeyOutput @fdc_generated(from: "Restaurant", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `Review` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  review_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: Review_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: Review_FirstRow
+  ): Review_KeyOutput @fdc_generated(from: "Review", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete a single `User` based on `id`, `key` or `first` and return its key (or `null` if not found).
+  """
+  user_delete(
+    """
+    The unique ID of the object.
+    """
+    id: UUID
+
+    """
+    The key used to identify the object.
+    """
+    key: User_Key
+
+    """
+    Fetch the first row based on the filters and ordering.
+    """
+    first: User_FirstRow
+  ): User_KeyOutput @fdc_generated(from: "User", purpose: DELETE_SINGLE)
+  """
+  ✨ Delete `FavoriteList` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  favoriteList_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: FavoriteList_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "FavoriteList", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `FavoriteListItem` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  favoriteListItem_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: FavoriteListItem_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "FavoriteListItem", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Restaurant` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  restaurant_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Restaurant_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Restaurant", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `Review` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  review_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: Review_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "Review", purpose: DELETE_MULTIPLE)
+  """
+  ✨ Delete `User` objects matching `where` conditions (or `all`, if true). Returns the number of rows deleted.
+  """
+  user_deleteMany(
+    """
+    Filter condition to specify which rows to delete.
+    """
+    where: User_Filter
+
+    """
+    Set to true to delete all rows.
+    """
+    all: Boolean = false
+  ): Int! @fdc_generated(from: "User", purpose: DELETE_MULTIPLE)
+}

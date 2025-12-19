@@ -1,0 +1,8 @@
+.firebase/
+.next/
+node_modules/
+google-cloud-sdk/
+*.tar.gz
+*.pack
+.env
+serviceAccountKey.json

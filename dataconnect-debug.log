@@ -1,0 +1,17 @@
+I1219 22:31:36.727205     231 load.go:31] Reloading schema and connectors...
+I1219 22:31:36.912055     231 control.go:94] [/emulator/studio-1 6794] UpdateResources(): done
+Main schema: sources: schema/schema.gql [783B] 
+Connector "example": sources: example/queries.gql [997B] 
+I1219 22:31:37.109441     231 codegen.go:80] [connector "example" javascriptSdk] Generating sources into "/home/user/studio/src/dataconnect-generated"
+I1219 22:31:37.146792     231 codegen.go:80] [connector "example" adminSdk] Generating sources into "/home/user/studio/src/dataconnect-admin-generated"
+I1219 22:31:37.152330     231 collector.go:107] schema extensions wrote into "/home/user/studio/dataconnect/.dataconnect/schema"
+Generated sources: main/implicit.gql [2357B] main/input.gql [48930B] main/relation.gql [24928B] main/query.gql [6403B] main/mutation.gql [17409B] prelude.gql [73219B] 
+I1219 22:31:37.162561     231 collector.go:107] connector "example" javascriptSdk wrote into "/home/user/studio/src/dataconnect-generated"
+Generated sources: package.json [863B] react/index.d.ts [1907B] react/esm/index.esm.js [1573B] .guides/usage.md [2181B] .guides/setup.md [1682B] index.d.ts [3609B] esm/package.json [17B] index.cjs.js [1935B] react/esm/package.json [17B] react/README.md [26781B] README.md [19452B] react/package.json [460B] .guides/config.json [236B] esm/index.esm.js [1659B] react/index.cjs.js [1665B] 
+I1219 22:31:37.312519     231 installsdk.go:55] Package @dataconnect/generated is already installed. Skipping installation
+I1219 22:31:37.315824     231 collector.go:107] connector "example" adminSdk wrote into "/home/user/studio/src/dataconnect-admin-generated"
+Generated sources: esm/index.esm.js [1345B] esm/package.json [17B] index.cjs.js [1522B] package.json [632B] index.d.ts [3579B] 
+I1219 22:31:37.327402     231 installsdk.go:55] Package @dataconnect/admin-generated is already installed. Skipping installation
+I1219 22:31:37.327449     231 load.go:109] Finished reloading
+I1219 22:31:37.386097     231 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+I1219 22:31:37.632790     231 engine.go:179] [/emulator/studio-1 6794] ExecuteGraphqlRead IntrospectionQuery: succeeded. 

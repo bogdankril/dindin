@@ -1,0 +1,557 @@
+{
+  "entities": {
+    "Customer": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Customer",
+      "type": "object",
+      "description": "Represents a customer with their contact and address information.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the customer entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The customer's full name."
+        },
+        "phone": {
+          "type": "string",
+          "description": "The customer's phone number."
+        },
+        "email": {
+          "type": "string",
+          "description": "The customer's email address.",
+          "format": "email"
+        },
+        "address": {
+          "type": "string",
+          "description": "The customer's full address."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the customer was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the customer was last updated."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "phone"
+      ]
+    },
+    "Vehicle": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Vehicle",
+      "type": "object",
+      "description": "Represents a vehicle with its identifying information.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the vehicle entity."
+        },
+        "vin": {
+          "type": "string",
+          "description": "The vehicle identification number."
+        },
+        "make": {
+          "type": "string",
+          "description": "The vehicle's make (e.g., Toyota)."
+        },
+        "model": {
+          "type": "string",
+          "description": "The vehicle's model (e.g., Camry)."
+        },
+        "year": {
+          "type": "string",
+          "description": "The vehicle's model year."
+        },
+        "bodyType": {
+          "type": "string",
+          "description": "The vehicle's body type (e.g., Sedan, SUV)."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the vehicle was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the vehicle was last updated."
+        }
+      },
+      "required": [
+        "id",
+        "vin",
+        "make",
+        "model",
+        "year"
+      ]
+    },
+    "Job": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Job",
+      "type": "object",
+      "description": "Represents a job or work order, linking customer, vehicle, and service details.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the job entity."
+        },
+        "jobId": {
+          "type": "string",
+          "description": "A readable job identifier, generated based on settings."
+        },
+        "customerId": {
+          "type": "string",
+          "description": "Reference to Customer. (Relationship: Customer 1:N Job)"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "The name of the customer associated with the job.  Redundant, but useful for display and search."
+        },
+        "vehicleId": {
+          "type": "string",
+          "description": "Reference to Vehicle. (Relationship: Vehicle 1:N Job)"
+        },
+        "vin": {
+          "type": "string",
+          "description": "The VIN of the vehicle associated with the job. Redundant, but useful for display and search."
+        },
+        "make": {
+          "type": "string",
+          "description": "The make of the vehicle associated with the job. Redundant, but useful for display."
+        },
+        "model": {
+          "type": "string",
+          "description": "The model of the vehicle associated with the job. Redundant, but useful for display."
+        },
+        "year": {
+          "type": "string",
+          "description": "The year of the vehicle associated with the job. Redundant, but useful for display."
+        },
+        "bodyType": {
+          "type": "string",
+          "description": "The body type of the vehicle associated with the job. Redundant, but useful for display."
+        },
+        "jobItems": {
+          "type": "array",
+          "description": "A list of items included in the job.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isQuote": {
+          "type": "boolean",
+          "description": "Indicates whether the job is a quote or a work order."
+        },
+        "serviceType": {
+          "type": "string",
+          "description": "The type of service provided (e.g., In-Shop, Mobile)."
+        },
+        "scheduledDate": {
+          "type": "string",
+          "description": "The date the job is scheduled for.",
+          "format": "date-time"
+        },
+        "scheduledTime": {
+          "type": "string",
+          "description": "The time the job is scheduled for."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Any notes or comments related to the job."
+        },
+        "insuranceClaim": {
+          "type": "boolean",
+          "description": "Indicates whether the job is related to an insurance claim."
+        },
+        "insuranceCompany": {
+          "type": "string",
+          "description": "The name of the insurance company, if applicable."
+        },
+        "deductible": {
+          "type": "number",
+          "description": "The deductible amount, if applicable."
+        },
+        "applySalesTax": {
+          "type": "boolean",
+          "description": "Indicates whether sales tax should be applied to the job."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the job was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the job was last updated."
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "The total job amount."
+        }
+      },
+      "required": [
+        "id",
+        "customerId",
+        "customerName",
+        "vin",
+        "make",
+        "model",
+        "year"
+      ]
+    },
+    "InventoryItem": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "InventoryItem",
+      "type": "object",
+      "description": "Represents an item in the glass inventory.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the inventory item."
+        },
+        "partNumber": {
+          "type": "string",
+          "description": "The part number of the inventory item."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the inventory item."
+        },
+        "quantity": {
+          "type": "number",
+          "description": "The quantity of the item in stock."
+        },
+        "cost": {
+          "type": "number",
+          "description": "The cost of the inventory item."
+        },
+        "price": {
+          "type": "number",
+          "description": "The selling price of the inventory item."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the inventory item was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the inventory item was last updated."
+        }
+      },
+      "required": [
+        "id",
+        "partNumber",
+        "description",
+        "quantity"
+      ]
+    },
+    "JobIdGenerationSettings": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "JobIdGenerationSettings",
+      "type": "object",
+      "description": "Settings for generating job IDs, including prefix and next number.",
+      "properties": {
+        "prefix": {
+          "type": "string",
+          "description": "The prefix for the job ID (e.g., JOB-)."
+        },
+        "nextNumber": {
+          "type": "number",
+          "description": "The next available number to use for generating a job ID."
+        }
+      },
+      "required": []
+    },
+    "BusinessProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "BusinessProfile",
+      "type": "object",
+      "description": "The business's profile information.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the business."
+        },
+        "address": {
+          "type": "string",
+          "description": "The address of the business."
+        },
+        "phone": {
+          "type": "string",
+          "description": "The phone number of the business."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the business.",
+          "format": "email"
+        },
+        "website": {
+          "type": "string",
+          "description": "The website URL of the business.",
+          "format": "uri"
+        }
+      },
+      "required": []
+    },
+    "SalesTaxSettings": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "SalesTaxSettings",
+      "type": "object",
+      "description": "Settings for the sales tax rate.",
+      "properties": {
+        "rate": {
+          "type": "number",
+          "description": "The sales tax rate (e.g., 7.25 for 7.25%)."
+        }
+      },
+      "required": []
+    },
+    "ItemCode": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ItemCode",
+      "type": "object",
+      "description": "Represents a pre-defined item code for quick job creation.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the item code."
+        },
+        "code": {
+          "type": "string",
+          "description": "The item code."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the item."
+        },
+        "price": {
+          "type": "number",
+          "description": "The default price of the item."
+        },
+        "cost": {
+          "type": "number",
+          "description": "The cost of the item."
+        },
+        "applyTax": {
+          "type": "boolean",
+          "description": "Indicates whether tax should be applied by default."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the item code was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the item code was last updated."
+        }
+      },
+      "required": [
+        "id",
+        "code",
+        "description"
+      ]
+    },
+    "ArchivedJob": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ArchivedJob",
+      "type": "object",
+      "description": "Represents a job that has been archived.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the archived job entity."
+        },
+        "jobId": {
+          "type": "string",
+          "description": "The job ID of the archived job."
+        },
+        "customerId": {
+          "type": "string",
+          "description": "Reference to Customer. (Relationship: Customer 1:N ArchivedJob)"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "The name of the customer associated with the archived job. Redundant, but useful for display and search."
+        },
+        "vehicleId": {
+          "type": "string",
+          "description": "Reference to Vehicle. (Relationship: Vehicle 1:N ArchivedJob)"
+        },
+        "vin": {
+          "type": "string",
+          "description": "The VIN of the vehicle associated with the archived job. Redundant, but useful for display and search."
+        },
+        "make": {
+          "type": "string",
+          "description": "The make of the vehicle associated with the archived job. Redundant, but useful for display."
+        },
+        "model": {
+          "type": "string",
+          "description": "The model of the vehicle associated with the archived job. Redundant, but useful for display."
+        },
+        "year": {
+          "type": "string",
+          "description": "The year of the vehicle associated with the archived job. Redundant, but useful for display."
+        },
+        "bodyType": {
+          "type": "string",
+          "description": "The body type of the vehicle associated with the archived job. Redundant, but useful for display."
+        },
+        "jobItems": {
+          "type": "array",
+          "description": "A list of items included in the archived job.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isQuote": {
+          "type": "boolean",
+          "description": "Indicates whether the archived job is a quote or a work order."
+        },
+        "serviceType": {
+          "type": "string",
+          "description": "The type of service provided (e.g., In-Shop, Mobile) for the archived job."
+        },
+        "scheduledDate": {
+          "type": "string",
+          "description": "The date the archived job was scheduled for.",
+          "format": "date-time"
+        },
+        "scheduledTime": {
+          "type": "string",
+          "description": "The time the archived job was scheduled for."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Any notes or comments related to the archived job."
+        },
+        "insuranceClaim": {
+          "type": "boolean",
+          "description": "Indicates whether the archived job is related to an insurance claim."
+        },
+        "insuranceCompany": {
+          "type": "string",
+          "description": "The name of the insurance company, if applicable, for the archived job."
+        },
+        "deductible": {
+          "type": "number",
+          "description": "The deductible amount, if applicable, for the archived job."
+        },
+        "applySalesTax": {
+          "type": "boolean",
+          "description": "Indicates whether sales tax should be applied to the archived job."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the archived job was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the archived job was last updated."
+        },
+        "archivedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the job was archived."
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "The total job amount."
+        }
+      },
+      "required": [
+        "id",
+        "customerId",
+        "customerName",
+        "vin",
+        "make",
+        "model",
+        "year"
+      ]
+    },
+    "ScheduleViewSettings": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ScheduleViewSettings",
+      "type": "object",
+      "description": "Settings for the default schedule view.",
+      "properties": {
+        "defaultView": {
+          "type": "string",
+          "description": "The default view for the schedule (threeDay, weekly, monthly)."
+        }
+      },
+      "required": []
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "reasoning": "This Firestore structure is designed to support a glass repair business application. It emphasizes path-based ownership for user-specific data, and denormalization to ensure authorization independence and efficient querying. Settings related to the app are stored in a dedicated `settings` subcollection under each user. Archived jobs are segregated into their own collection. This design supports the required QAPs by using structural segregation to enforce consistent security requirements across collections. All customer, vehicle and jobs documents are kept within the current user's collection, ensuring data isolation and simplifying security rules.",
+    "/artifacts/{appId}/users/{userId}/customers/{customerId}": {
+      "schema": {
+        "$ref": "#/entities/Customer"
+      },
+      "description": "Stores customer information. Path-based ownership ensures only the user can access their customer data."
+    },
+    "/artifacts/{appId}/users/{userId}/vehicles/{vehicleId}": {
+      "schema": {
+        "$ref": "#/entities/Vehicle"
+      },
+      "description": "Stores vehicle information. Path-based ownership ensures only the user can access their vehicle data."
+    },
+    "/artifacts/{appId}/users/{userId}/jobs/{jobId}": {
+      "schema": {
+        "$ref": "#/entities/Job"
+      },
+      "description": "Stores job or work order information. Path-based ownership ensures only the user can access their job data. Includes denormalized customer and vehicle data for faster access and authorization independence."
+    },
+    "/artifacts/{appId}/users/{userId}/inventory/{inventoryItemId}": {
+      "schema": {
+        "$ref": "#/entities/InventoryItem"
+      },
+      "description": "Stores glass inventory items. Path-based ownership ensures only the user can access their inventory data."
+    },
+    "/artifacts/{appId}/users/{userId}/settings/jobIdGeneration": {
+      "schema": {
+        "$ref": "#/entities/JobIdGenerationSettings"
+      },
+      "description": "Stores settings for generating job IDs. A single document per user."
+    },
+    "/artifacts/{appId}/users/{userId}/settings/businessProfile": {
+      "schema": {
+        "$ref": "#/entities/BusinessProfile"
+      },
+      "description": "Stores the business's profile information. A single document per user."
+    },
+    "/artifacts/{appId}/users/{userId}/settings/salesTax": {
+      "schema": {
+        "$ref": "#/entities/SalesTaxSettings"
+      },
+      "description": "Stores settings for sales tax. A single document per user."
+    },
+    "/artifacts/{appId}/users/{userId}/itemCodes/{itemCodeId}": {
+      "schema": {
+        "$ref": "#/entities/ItemCode"
+      },
+      "description": "Stores pre-defined item codes. Path-based ownership ensures only the user can access their item code data."
+    },
+    "/artifacts/{appId}/users/{userId}/archivedJobs/{archivedJobId}": {
+      "schema": {
+        "$ref": "#/entities/ArchivedJob"
+      },
+      "description": "Stores archived job data. Path-based ownership ensures only the user can access their archived job data. Includes denormalized customer and vehicle data for faster access and authorization independence."
+    },
+    "/artifacts/{appId}/users/{userId}/settings/scheduleView": {
+      "schema": {
+        "$ref": "#/entities/ScheduleViewSettings"
+      },
+      "description": "Stores default schedule view settings. A single document per user."
+    }
+  }
+}
